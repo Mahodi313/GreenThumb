@@ -27,7 +27,9 @@ namespace GreenThumb
         }
         private void tbkRegister_Click(object sender, RoutedEventArgs e)
         {
-
+            RegisterWindow registerWindow = new RegisterWindow();
+            registerWindow.Show();
+            Close();
         }
 
     }
