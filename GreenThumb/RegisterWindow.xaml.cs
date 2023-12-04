@@ -93,6 +93,10 @@ namespace GreenThumb
                 }
 
                 MessageBox.Show("Account successfully created! Your garden is created for you...", "Confirmation", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                MainWindow mainWindow = new MainWindow();
+                mainWindow.Show();
+                Close();
             }
             catch(ArgumentException ax) 
             {
