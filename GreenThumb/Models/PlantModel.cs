@@ -12,8 +12,6 @@ namespace GreenThumb.Models
         public string Name { get; set; } = null!;
         [Column("description")]
         public string? Description { get; set; }
-        [Column("origin")]
-        public string? Origin { get; set; }
         public List<GardenModel> Gardens { get; set; } = new();
         public List<InstructionModel> Instructions { get; set; } = new();
     }
