@@ -44,7 +44,11 @@ namespace GreenThumb
 
         private void btnLogout_Click(object sender, RoutedEventArgs e)
         {
+            MainWindow.LoggedInUser = null;
 
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            Close();
         }
 
         private async void txtSearch_TextChanged(object sender, TextChangedEventArgs e)
