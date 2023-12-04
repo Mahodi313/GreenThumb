@@ -27,5 +27,25 @@ namespace GreenThumb
             InitializeComponent();
             _user = user;
         }
+
+        private void btnAdd_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnDetails_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnMyGarden_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnLogout_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

@@ -16,5 +16,26 @@
             <ColumnDefinition/>
             <ColumnDefinition Width="20"/>
         </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+        
+        <Border Grid.Column="1" Grid.Row="1" Grid.RowSpan="6" Grid.ColumnSpan="3" Background="PaleGreen" BorderBrush="Black" BorderThickness="2" CornerRadius="10"/>
+        <Label Grid.Column="1" Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Center" Content="Search" FontWeight="Bold" FontSize="16"/>
+        <Label Grid.Column="2" Grid.Row="2" VerticalAlignment="Bottom" HorizontalAlignment="Center" Content="Plants" FontWeight="Bold" FontSize="16"/>
+        <TextBox x:Name="txtSearch" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="3" VerticalAlignment="Bottom" Height="25" Margin="110 0 80 5" VerticalContentAlignment="Center"/>
+        <ListBox x:Name="lstPlants" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="3" Grid.RowSpan="4" Margin="10"/>
+
+        <Button x:Name="btnLogout" Grid.Column="4" Grid.Row="1" Margin="10" Background="Transparent" Content="Log out" FontSize="16" FontWeight="Bold" BorderBrush="Black" BorderThickness="2"/>
+        <Button Name="btnMyGarden" Grid.Column="5" Grid.Row="1" Margin="10" Background="Transparent" Content="My Garden" FontSize="16" FontWeight="Bold" BorderBrush="Black" BorderThickness="2"/>
+        <Button x:Name="btnDetails" Grid.Column="4" Grid.Row="3" Grid.ColumnSpan="2" Margin="10" Background="Transparent" Content="Check details of plant" FontSize="16" FontWeight="Bold" BorderBrush="Black" BorderThickness="2"/>
+        <Button x:Name="btnAdd" Grid.Column="4" Grid.Row="5" Grid.ColumnSpan="2" Margin="10" Background="Transparent" Content="Add plant to garden" FontSize="16" FontWeight="Bold" BorderBrush="Black" BorderThickness="2"/>
     </Grid>
 </Window>
