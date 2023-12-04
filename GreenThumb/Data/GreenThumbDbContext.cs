@@ -264,16 +264,6 @@ namespace GreenThumb.Data
                     PlantId = 15
                 });
 
-            // Admin
-
-            modelBuilder.Entity<UserModel>().HasData(
-                new UserModel()
-                {
-                    UserId = 1,
-                    Username = "admin",
-                    password = "password",
-                    IsAdmin = true
-                });
         }
     }
 }

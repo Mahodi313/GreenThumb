@@ -361,7 +361,7 @@ namespace GreenThumb.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = 1,
+                            UserId = 4,
                             IsAdmin = true,
                             Username = "admin",
                             password = "cQpKzTUoLNp8Lfr5jDxKWQ=="

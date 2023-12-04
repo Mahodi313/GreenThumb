@@ -23,7 +23,14 @@ namespace GreenThumb
 
         private void btnSignIn_Click(object sender, RoutedEventArgs e)
         {
+            try 
+            {
+                string username = txtUsername.Text;
+            }
+            catch 
+            {
 
+            }
         }
         private void tbkRegister_Click(object sender, RoutedEventArgs e)
         {
