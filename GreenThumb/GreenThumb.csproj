@@ -9,6 +9,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\green-thumb-logo.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="EntityFrameworkCore.EncryptColumn" Version="6.0.8" />
     <PackageReference Include="microsoft.EntityFrameworkCore" Version="6.0.25" />
     <PackageReference Include="microsoft.EntityFrameworkCore.design" Version="6.0.25">
@@ -24,6 +28,10 @@
 
   <ItemGroup>
     <Folder Include="TextFiles\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <SplashScreen Include="Images\green-thumb-logo.png" />
   </ItemGroup>
 
 </Project>
