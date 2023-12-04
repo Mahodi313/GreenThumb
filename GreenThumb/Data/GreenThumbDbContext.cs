@@ -1,13 +1,19 @@
-﻿using GreenThumb.Models;
+﻿using EntityFrameworkCore.EncryptColumn.Extension;
+using EntityFrameworkCore.EncryptColumn.Interfaces;
+using EntityFrameworkCore.EncryptColumn.Util;
+using GreenThumb.Managers;
+using GreenThumb.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace GreenThumb.Data
 {
     public class GreenThumbDbContext : DbContext
     {
+        private readonly IEncryptionProvider _provider;
+
         public GreenThumbDbContext()
         {
-
+            _provider = new GenerateEncryptionProvider(KeyManager.GetEncryptionKey());
         }
 
         public DbSet<UserModel> Users { get; set; }
@@ -24,10 +30,12 @@ namespace GreenThumb.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
             base.OnModelCreating(modelBuilder);
 
-            // Seeding
+            modelBuilder.UseEncryption(_provider);
 
+            // Seeding
             //Plants
 
             modelBuilder.Entity<PlantModel>().HasData(
@@ -254,6 +262,17 @@ namespace GreenThumb.Data
                     Name = "Natural Shape",
                     Description = "Allow Arctic Willow to maintain its natural, arching form. Minimal pruning is needed to enhance its graceful appearance. Embrace its natural growth habit for a more authentic look.",
                     PlantId = 15
+                });
+
+            // Admin
+
+            modelBuilder.Entity<UserModel>().HasData(
+                new UserModel()
+                {
+                    UserId = 1,
+                    Username = "admin",
+                    password = "password",
+                    IsAdmin = true
                 });
         }
     }
