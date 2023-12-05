@@ -60,7 +60,7 @@ namespace GreenThumb
                 UserModel newUser = new() 
                 {
                     Username = username,
-                    password = password,
+                    Password = password,
                     IsAdmin = false
                                       
                 };

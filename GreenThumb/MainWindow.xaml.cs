@@ -53,7 +53,7 @@ namespace GreenThumb
                         foreach (var user in users)
                         {
 
-                            if (username == user.Username && password == user.password)
+                            if (username == user.Username && password == user.Password)
                             {
                                 // Implement logic for opening Plant main window for user
                                 PlantWindow plantWindow = new(user);

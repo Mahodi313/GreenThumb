@@ -19,7 +19,7 @@ namespace GreenThumb.Data
         public DbSet<UserModel> Users { get; set; }
         public DbSet<GardenModel> Gardens { get; set; }
         public DbSet<PlantModel> Plants { get; set; }
-        public DbSet<InstructionModel> Instruction { get; set; }
+        public DbSet<InstructionModel> Instructions { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

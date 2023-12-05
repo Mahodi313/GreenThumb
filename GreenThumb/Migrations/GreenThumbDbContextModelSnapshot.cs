@@ -85,7 +85,7 @@ namespace GreenThumb.Migrations
 
                     b.HasIndex("PlantId");
 
-                    b.ToTable("Instruction");
+                    b.ToTable("Instructions");
 
                     b.HasData(
                         new
@@ -344,28 +344,19 @@ namespace GreenThumb.Migrations
                         .HasColumnType("bit")
                         .HasColumnName("is_admin");
 
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("password");
+
                     b.Property<string>("Username")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("username");
 
-                    b.Property<string>("password")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("password");
-
                     b.HasKey("UserId");
 
                     b.ToTable("Users");
-
-                    b.HasData(
-                        new
-                        {
-                            UserId = 4,
-                            IsAdmin = true,
-                            Username = "admin",
-                            password = "cQpKzTUoLNp8Lfr5jDxKWQ=="
-                        });
                 });
 
             modelBuilder.Entity("GardenModelPlantModel", b =>

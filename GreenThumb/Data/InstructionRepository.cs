@@ -18,7 +18,7 @@ namespace GreenThumb.Data
 
         public List<InstructionModel> GetInstructionsOfPlant(int plantId) 
         {
-            return _context.Instruction.Where(i => i.PlantId == plantId).ToList();  
+            return _context.Instructions.Where(i => i.PlantId == plantId).ToList();  
         }
     }
 }

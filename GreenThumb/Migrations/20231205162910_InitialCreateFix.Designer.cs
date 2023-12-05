@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GreenThumb.Migrations
 {
     [DbContext(typeof(GreenThumbDbContext))]
-    [Migration("20231204162648_SeedInstructions")]
-    partial class SeedInstructions
+    [Migration("20231205162910_InitialCreateFix")]
+    partial class InitialCreateFix
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -87,7 +87,7 @@ namespace GreenThumb.Migrations
 
                     b.HasIndex("PlantId");
 
-                    b.ToTable("Instruction");
+                    b.ToTable("Instructions");
 
                     b.HasData(
                         new
@@ -346,15 +346,15 @@ namespace GreenThumb.Migrations
                         .HasColumnType("bit")
                         .HasColumnName("is_admin");
 
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("password");
+
                     b.Property<string>("Username")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("username");
-
-                    b.Property<string>("password")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("password");
 
                     b.HasKey("UserId");
 

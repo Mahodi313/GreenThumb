@@ -13,7 +13,7 @@ namespace GreenThumb.Models
         public string Username { get; set; } = null!;
         [Column("password")]
         [EncryptColumn]
-        public string password { get; set; } = null!;
+        public string Password { get; set; } = null!;
         [Column("is_admin")]
         public bool IsAdmin { get; set; }
         public GardenModel? Garden { get; set; }
