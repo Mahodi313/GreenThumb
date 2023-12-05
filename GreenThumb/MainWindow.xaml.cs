@@ -44,20 +44,28 @@ namespace GreenThumb
 
                     var users = await userRepo.GetAll();
 
-                    foreach (var user in users) 
+                    if (users.Count <= 0)
                     {
-                        if (username == user.Username && password == user.password) 
+                        throw new ArgumentException("There are no accounts created! Please create an account.");
+                    }
+                    else 
+                    {
+                        foreach (var user in users)
                         {
-                            // Implement logic for opening Plant main window for user
-                            PlantWindow plantWindow = new(user);
-                            plantWindow.Show();
-                            Close();
 
-                            LoggedInUser = user;
-                        }
-                        else 
-                        {
-                            throw new ArgumentException("The username or password is invalid! Try again.");
+                            if (username == user.Username && password == user.password)
+                            {
+                                // Implement logic for opening Plant main window for user
+                                PlantWindow plantWindow = new(user);
+                                plantWindow.Show();
+                                Close();
+
+                                LoggedInUser = user;
+                            }
+                            else
+                            {
+                                throw new ArgumentException("The username or password is invalid! Try again.");
+                            }
                         }
                     }
                 }
