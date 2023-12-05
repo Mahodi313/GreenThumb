@@ -44,24 +44,46 @@ namespace GreenThumb
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            using (GreenThumbDbContext context = new GreenThumbDbContext()) 
+            try 
             {
-                GreenUow uow = new(context);
-
-                var gardenOfUser = uow.GardenRepo.GetUserGarden(_user.UserId);
-
-                if (gardenOfUser != null) 
+                using (GreenThumbDbContext context = new GreenThumbDbContext())
                 {
-                    gardenOfUser.Plants.Add(_plant);
+                    GreenUow uow = new(context);
 
-                    uow.SaveChanges();
+                    var gardenOfUser = uow.GardenRepo.GetUserGarden(_user.UserId);
 
-                    MessageBox.Show($"{_plant.Name} has been successfully added to your garden!", "Confirmation", MessageBoxButton.OK, MessageBoxImage.Information);
+                    if (gardenOfUser != null)
+                    {
+                        var plantsOfUser = uow.GardenRepo.GetPlantsOfGarden(gardenOfUser);
 
-                    PlantWindow plantWindow = new(_user);
-                    plantWindow.Show();
-                    Close();   
-                }                
+                        // Check if user already has the plant in his garden!
+                        foreach (var plant in plantsOfUser) 
+                        {
+                            if (_plant.Name == plant.Name) 
+                            {
+                                throw new ArgumentException($"{plant.Name} already exists in your garden! Try with another one.");
+                            }
+                        }
+                        
+                        gardenOfUser.Plants.Add(_plant);
+
+                        uow.SaveChanges();
+
+                        MessageBox.Show($"{_plant.Name} has been successfully added to your garden!", "Confirmation", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                        PlantWindow plantWindow = new(_user);
+                        plantWindow.Show();
+                        Close();
+                    }
+                }
+            }
+            catch(ArgumentException ax) 
+            {
+                MessageBox.Show(ax.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            catch (Exception) 
+            {
+                MessageBox.Show("Error when adding plant! Try again..", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
