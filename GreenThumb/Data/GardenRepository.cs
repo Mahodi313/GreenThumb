@@ -28,5 +28,10 @@ namespace GreenThumb.Data
         {
             return userGarden.Plants.ToList();
         }
+
+        public void AddPlantToGarden(PlantModel plant, GardenModel garden) 
+        {
+            garden.Plants.Add(plant);
+        }
     }
 }

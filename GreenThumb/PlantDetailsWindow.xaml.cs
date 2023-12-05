@@ -64,8 +64,8 @@ namespace GreenThumb
                                 throw new ArgumentException($"{plant.Name} already exists in your garden! Try with another one.");
                             }
                         }
-                        
-                        gardenOfUser.Plants.Add(_plant);
+
+                        uow.GardenRepo.AddPlantToGarden(_plant, gardenOfUser);
 
                         uow.SaveChanges();
 
