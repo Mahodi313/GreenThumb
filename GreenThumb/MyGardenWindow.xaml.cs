@@ -1,4 +1,6 @@
-﻿using System;
+﻿using GreenThumb.Data;
+using GreenThumb.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,14 +21,49 @@ namespace GreenThumb
     /// </summary>
     public partial class MyGardenWindow : Window
     {
-        public MyGardenWindow()
+        private readonly UserModel _user;
+
+        public MyGardenWindow(UserModel user)
         {
             InitializeComponent();
+            _user = user;
+
+            UpdateUI();
         }
 
         private void btnGoBack_Click(object sender, RoutedEventArgs e)
         {
+            PlantWindow plantWindow = new(_user);
+            plantWindow.Show();
+            Close();
+        }
 
+        private void UpdateUI() 
+        {
+            if (_user != null) 
+            {
+                using (GreenThumbDbContext context = new GreenThumbDbContext()) 
+                {
+                    GreenUow uow = new(context);
+                    // Get users garden
+                    var gardenOfUser = uow.GardenRepo.GetUserGarden(_user.UserId);
+
+                    if (gardenOfUser != null) 
+                    {
+                        //Get the plants of that garden and add them to the list.
+                        var plants = uow.GardenRepo.GetPlantsOfGarden(gardenOfUser);
+
+                        foreach (var plant in plants) 
+                        {
+                            ListBoxItem item = new();
+                            item.Content = plant.Name;
+                            item.Tag = plant;
+
+                            lstPlants.Items.Add(item);
+                        }
+                    }                    
+                }
+            }
         }
     }
 }

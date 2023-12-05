@@ -66,7 +66,9 @@ namespace GreenThumb
 
         private void btnMyGarden_Click(object sender, RoutedEventArgs e)
         {
-
+            MyGardenWindow myGardenWindow = new(_user);
+            myGardenWindow.Show();
+            Close();
         }
 
         private void btnLogout_Click(object sender, RoutedEventArgs e)

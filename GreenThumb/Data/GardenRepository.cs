@@ -1,4 +1,5 @@
 ﻿using GreenThumb.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +19,14 @@ namespace GreenThumb.Data
 
         public GardenModel? GetUserGarden(int userId) 
         {
-            return _context.Gardens.FirstOrDefault(g => g.UserId == userId);
+            return _context.Gardens
+            .Include(g => g.Plants)  
+            .FirstOrDefault(g => g.UserId == userId);
+        }
+
+        public List<PlantModel> GetPlantsOfGarden(GardenModel userGarden) 
+        {
+            return userGarden.Plants.ToList();
         }
     }
 }

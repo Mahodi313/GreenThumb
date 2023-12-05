@@ -32,6 +32,6 @@
         <Border Grid.Column="1" Grid.Row="2" Grid.RowSpan="5" Grid.ColumnSpan="5" Background="PaleGreen" BorderBrush="Black" BorderThickness="2" CornerRadius="20"/>
         <Label Grid.Column="2" Grid.Row="2" VerticalAlignment="Bottom" HorizontalAlignment="Center" Content="Plants" FontWeight="Bold" FontSize="16"/>
         <ListBox Name="lstPlants" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="3" Grid.RowSpan="4" Margin="15 5 15 15"/>
-        <Button Name="btnGoBack" Grid.Column="4" Grid.Row="6" Grid.ColumnSpan="2" Margin="15" Background="Transparent" Foreground="Black" Content="Go back" FontSize="16" FontWeight="Bold" BorderBrush="Black" BorderThickness="2"/>
+        <Button Name="btnGoBack" Grid.Column="4" Grid.Row="6" Grid.ColumnSpan="2" Margin="15" Background="Transparent" Foreground="Black" Content="Go back" FontSize="16" FontWeight="Bold" BorderBrush="Black" BorderThickness="2" Click="btnGoBack_Click"/>
     </Grid>
 </Window>
