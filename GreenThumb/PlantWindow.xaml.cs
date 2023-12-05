@@ -34,7 +34,34 @@ namespace GreenThumb
 
         private void btnDetails_Click(object sender, RoutedEventArgs e)
         {
+            try 
+            {
+                ListBoxItem selectedItem = (ListBoxItem)lstPlants.SelectedItem;
 
+                if (selectedItem != null) 
+                {
+                    PlantModel plant = (PlantModel)selectedItem.Tag;
+
+                    if (plant != null) 
+                    {
+                        PlantDetailsWindow plantDetailsWindow = new(plant, _user);
+                        plantDetailsWindow.Show();
+                        Close();
+                    }
+                }
+                else 
+                {
+                    throw new NullReferenceException("You need to select a plant before proceeding");
+                }
+            }
+            catch(NullReferenceException nex) 
+            {
+                MessageBox.Show(nex.Message, "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            catch (Exception) 
+            {
+                MessageBox.Show("Error while selecting item!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void btnMyGarden_Click(object sender, RoutedEventArgs e)

@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,7 +34,6 @@ namespace GreenThumb.Data
             await _dbSet.AddAsync(entity);
         }
 
-        // NICE TO HAVE
         public void Update(T entity) 
         {
             _context.Entry(entity).State = EntityState.Modified;
