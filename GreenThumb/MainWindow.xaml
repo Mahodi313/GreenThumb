@@ -66,5 +66,7 @@
                 Create a new account
             </Hyperlink>
         </TextBlock>
+
+        <Button x:Name="btnAdmin" Grid.Column="1" Grid.Row="7" Content="Admin" Margin="10" Background="Transparent" Foreground="Red" BorderBrush="Red" Click="btnAdmin_Click"/>
     </Grid>
 </Window>

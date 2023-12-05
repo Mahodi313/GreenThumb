@@ -78,5 +78,11 @@ namespace GreenThumb
             Close();
         }
 
+        private void btnAdmin_Click(object sender, RoutedEventArgs e)
+        {
+            AdminWindow adminWindow = new AdminWindow();
+            adminWindow.Show();
+            Close();
+        }
     }
 }
