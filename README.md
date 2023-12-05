@@ -1,3 +1,12 @@
 # GreenThumb
- Final project for DAB moment 1
-<img width="409" alt="Skärmbild 2023-12-04 135718" src="https://github.com/Mahodi313/GreenThumb/assets/101713771/6470e282-d1d6-4c7c-8ec9-57b3c64cc224">
+Final Project For DAB moment 1
+
+
+
+
+
+
+
+ER-diagram
+<img width="448" alt="ER-Diagram" src="https://github.com/Mahodi313/GreenThumb/assets/101713771/cfece6c4-a083-4501-89bb-e43a2392ee7d">
+
