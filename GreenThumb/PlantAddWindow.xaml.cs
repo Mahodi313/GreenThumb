@@ -33,5 +33,12 @@ namespace GreenThumb
         {
 
         }
+
+        private void btnGoBack_Click(object sender, RoutedEventArgs e)
+        {
+            AdminWindow admin = new AdminWindow();
+            admin.Show();
+            Close();
+        }
     }
 }

@@ -29,7 +29,9 @@ namespace GreenThumb
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-
+            PlantAddWindow plantAddWindow = new PlantAddWindow();
+            plantAddWindow.Show();
+            Close();
         }
 
         private async void btnRemove_Click(object sender, RoutedEventArgs e)

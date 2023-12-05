@@ -32,13 +32,13 @@
         <Label Content="Plant Description" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Bottom" FontWeight="Bold" FontSize="16"/>
         <TextBox x:Name="txtPlantName" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Margin="0 0 127 0" Height="25" VerticalAlignment="Bottom" VerticalContentAlignment="Center"/>
         <TextBox x:Name="txtPlantDesc" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="3" TextWrapping="Wrap"/>
-        <Button x:Name="btnAddPlant" Grid.Column="1" Grid.Row="6" Grid.ColumnSpan="2" Margin="15" Content="Add Plant" FontSize="16" FontWeight="Bold" Background="Transparent" BorderBrush="Black" BorderThickness="2" />
-
+        <Button x:Name="btnAddPlant" Grid.Column="1" Grid.Row="6" Grid.ColumnSpan="1" Margin="15" Content="Add Plant" FontSize="16" FontWeight="Bold" Background="Transparent" BorderBrush="Black" BorderThickness="2" Click="btnAddPlant_Click" />
+        <Button x:Name="btnGoBack" Grid.Column="2" Grid.Row="6" Grid.ColumnSpan="1" Margin="15" Content="Go back" FontSize="16" FontWeight="Bold" Background="Transparent" BorderBrush="Black" BorderThickness="2" Click="btnGoBack_Click" />
         <Border Grid.Column="4" Grid.Row="1" Grid.RowSpan="6" Grid.ColumnSpan="3" Background="PaleGreen" BorderBrush="Black" BorderThickness="2"/>
         <Label  Content="Instruction name" Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="4" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" Margin="0 10"/>
         <Label Content="Plant Description" Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="2" VerticalAlignment="Bottom" FontWeight="Bold" FontSize="16"/>
         <TextBox x:Name="txtInstructionName" Grid.Row="1" Grid.Column="4" Grid.ColumnSpan="3" Margin="5 0 5 0" Height="25" VerticalAlignment="Bottom" VerticalContentAlignment="Center"/>
         <TextBox x:Name="txtInstructionDesc" Grid.Row="3" Grid.Column="4" Grid.ColumnSpan="3" Margin="5 0 5 0" Grid.RowSpan="3" TextWrapping="Wrap"/>
-        <Button x:Name="btnAddInstruction" Grid.Column="4" Grid.Row="6" Grid.ColumnSpan="3" Margin="15" Content="Add Instruction" FontSize="16" FontWeight="Bold" Background="Transparent" BorderBrush="Black" BorderThickness="2" />
+        <Button x:Name="btnAddInstruction" Grid.Column="4" Grid.Row="6" Grid.ColumnSpan="3" Margin="15" Content="Add Instruction" FontSize="16" FontWeight="Bold" Background="Transparent" BorderBrush="Black" BorderThickness="2" Click="btnAddInstruction_Click" />
     </Grid>
 </Window>
