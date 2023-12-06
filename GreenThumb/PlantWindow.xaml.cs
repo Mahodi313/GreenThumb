@@ -1,18 +1,7 @@
 ﻿using GreenThumb.Data;
 using GreenThumb.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace GreenThumb
 {
@@ -29,36 +18,36 @@ namespace GreenThumb
             InitializeComponent();
             InitializeAsync();
             _user = user;
-           
+
         }
 
         private void btnDetails_Click(object sender, RoutedEventArgs e)
         {
-            try 
+            try
             {
                 ListBoxItem selectedItem = (ListBoxItem)lstPlants.SelectedItem;
 
-                if (selectedItem != null) 
+                if (selectedItem != null)
                 {
                     PlantModel plant = (PlantModel)selectedItem.Tag;
 
-                    if (plant != null) 
+                    if (plant != null)
                     {
                         PlantDetailsWindow plantDetailsWindow = new(plant, _user);
                         plantDetailsWindow.Show();
                         Close();
                     }
                 }
-                else 
+                else
                 {
                     throw new NullReferenceException("You need to select a plant before proceeding");
                 }
             }
-            catch(NullReferenceException nex) 
+            catch (NullReferenceException nex)
             {
                 MessageBox.Show(nex.Message, "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
-            catch (Exception) 
+            catch (Exception)
             {
                 MessageBox.Show("Error while selecting item!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
@@ -88,7 +77,7 @@ namespace GreenThumb
             await UpdateUI(searchText);
         }
 
-        public async Task UpdateUI(string? searchText = null) 
+        public async Task UpdateUI(string? searchText = null)
         {
             lstPlants.Items.Clear();
 
@@ -117,8 +106,8 @@ namespace GreenThumb
                 }
             }
         }
-       
-        public async void InitializeAsync() 
+
+        public async void InitializeAsync()
         {
             //No need for an argument because the parameter variable in UpdateUI() is set to = null.
             await UpdateUI();

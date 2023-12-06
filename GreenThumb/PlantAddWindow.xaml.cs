@@ -1,18 +1,6 @@
 ﻿using GreenThumb.Data;
 using GreenThumb.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace GreenThumb
 {
@@ -31,25 +19,25 @@ namespace GreenThumb
 
         private async void btnAddPlant_Click(object sender, RoutedEventArgs e)
         {
-            try 
+            try
             {
                 string plantName = txtPlantName.Text;
                 string plantDescription = txtPlantDesc.Text;
 
-                if (string.IsNullOrWhiteSpace(plantName.Trim()) ) 
+                if (string.IsNullOrWhiteSpace(plantName.Trim()))
                 {
                     throw new ArgumentException("Please fill in all needed information!");
                 }
-                else 
+                else
                 {
-                    using (GreenThumbDbContext context = new GreenThumbDbContext()) 
+                    using (GreenThumbDbContext context = new GreenThumbDbContext())
                     {
                         GreenRepository<PlantModel> plantRepo = new(context);
                         var plants = await plantRepo.GetAll();
 
-                        foreach (var plant in plants) 
+                        foreach (var plant in plants)
                         {
-                            if (plantName == plant.Name) 
+                            if (plantName == plant.Name)
                             {
                                 throw new ArgumentException("The plant you provided already exists!");
                             }
@@ -64,12 +52,12 @@ namespace GreenThumb
 
                     _plant = newPlant;
 
-                    using (GreenThumbDbContext context = new GreenThumbDbContext()) 
+                    using (GreenThumbDbContext context = new GreenThumbDbContext())
                     {
                         GreenRepository<PlantModel> plantRepo = new(context);
 
                         await plantRepo.Add(newPlant);
-                        
+
                         await plantRepo.SaveChanges();
                     }
 
@@ -79,16 +67,16 @@ namespace GreenThumb
                     txtPlantName.IsReadOnly = true;
                     txtPlantDesc.IsReadOnly = true;
                     btnAddPlant.IsEnabled = false;
-                    txtInstructionName.IsReadOnly= false;
+                    txtInstructionName.IsReadOnly = false;
                     txtInstructionDesc.IsReadOnly = false;
                     btnAddInstruction.IsEnabled = true;
                 }
             }
-            catch(ArgumentException ax)  
+            catch (ArgumentException ax)
             {
                 MessageBox.Show(ax.Message, "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
@@ -96,9 +84,9 @@ namespace GreenThumb
 
         private async void btnAddInstruction_Click(object sender, RoutedEventArgs e)
         {
-            try 
+            try
             {
-                if (_plant != null) 
+                if (_plant != null)
                 {
                     string name = txtInstructionName.Text;
                     string description = txtInstructionDesc.Text;
@@ -108,21 +96,6 @@ namespace GreenThumb
                         throw new ArgumentException("You need to atleast fill in the name of the instruction before adding it!");
                     }
 
-                    using (GreenThumbDbContext context = new())
-                    {
-                        GreenRepository<InstructionModel> instructionRepo = new(context);
-
-                        var instructions = await instructionRepo.GetAll();
-
-                        foreach (var instruction in instructions) 
-                        {
-                            if (name == instruction.Name) 
-                            {
-                                throw new ArgumentException("This instruction already belongs to another plant!");
-                            }
-                        }
-                    }
-
                     InstructionModel newInstruction = new()
                     {
                         Name = name,
@@ -130,7 +103,7 @@ namespace GreenThumb
                         PlantId = _plant.PlantId
                     };
 
-                    using(GreenThumbDbContext context = new()) 
+                    using (GreenThumbDbContext context = new())
                     {
                         GreenRepository<InstructionModel> instructionRepo = new(context);
 
@@ -143,15 +116,15 @@ namespace GreenThumb
                     txtInstructionName.Clear();
                     txtInstructionDesc.Clear();
                 }
-                else 
+                else
                 {
                     throw new ArgumentException("Please add a plant first!");
                 }
             }
-            catch(ArgumentException ex) 
+            catch (ArgumentException ex)
             {
                 MessageBox.Show(ex.Message, "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
-            } 
+            }
         }
 
         private void btnGoBack_Click(object sender, RoutedEventArgs e)
@@ -161,7 +134,7 @@ namespace GreenThumb
             Close();
         }
 
-        private void UpdateUI() 
+        private void UpdateUI()
         {
             txtPlantName.Clear();
             txtPlantDesc.Clear();
