@@ -1,10 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GreenThumb.Data
 {
@@ -19,22 +13,22 @@ namespace GreenThumb.Data
             _dbSet = context.Set<T>();
         }
 
-        public async Task<List<T>> GetAll() 
+        public async Task<List<T>> GetAll()
         {
             return await _dbSet.ToListAsync();
         }
-
-        public async Task<T?> GetById(int id) 
+        // Not in use
+        public async Task<T?> GetById(int id)
         {
             return await _dbSet.FindAsync(id);
         }
 
-        public async Task Add(T entity) 
+        public async Task Add(T entity)
         {
             await _dbSet.AddAsync(entity);
         }
-
-        public void Update(T entity) 
+        // Not in use
+        public void Update(T entity)
         {
             _context.Entry(entity).State = EntityState.Modified;
         }
