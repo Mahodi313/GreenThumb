@@ -28,6 +28,8 @@ namespace GreenThumb.Managers
             {
                 string key = GenerateEncryptionKey();
 
+                // Check if file exists or files is readonly. If file is read only, then you can't edit the textfile.
+
                 if (!File.Exists(filePath) || (File.GetAttributes(filePath) & FileAttributes.ReadOnly) != FileAttributes.ReadOnly)
                 {
                     File.WriteAllText(filePath, key);
