@@ -1,5 +1,5 @@
 # GreenThumb
-Final Project For DAB moment 1
+Final Project For database management
 
 
 
