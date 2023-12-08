@@ -1,17 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
+﻿using System.IO;
 using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace GreenThumb.Managers
 {
     public static class KeyManager
     {
-        public static string GetEncryptionKey() 
+        public static string GetEncryptionKey()
         {
             string directoryPath = "TextFiles";
             string filePath = Path.Combine(directoryPath, "Key.txt");
@@ -29,7 +24,7 @@ namespace GreenThumb.Managers
             {
                 return File.ReadAllText(filePath);
             }
-            else 
+            else
             {
                 string key = GenerateEncryptionKey();
 
@@ -50,7 +45,7 @@ namespace GreenThumb.Managers
         {
             var rng = new RNGCryptoServiceProvider();
 
-            var byteArray = new byte[24];
+            var byteArray = new byte[16];
             rng.GetBytes(byteArray);
             return Convert.ToBase64String(byteArray);
         }
