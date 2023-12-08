@@ -30,4 +30,8 @@
     <SplashScreen Include="Images\green-thumb-logo.png" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="TextFiles\" />
+  </ItemGroup>
+
 </Project>
